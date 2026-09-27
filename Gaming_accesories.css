@@ -1,0 +1,31 @@
+h1 {
+    display: grid;
+    justify-content: center;
+}
+
+#nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    list-style-type: none;
+    gap: 100px;
+    background-color: aliceblue;
+}
+
+#top-banner {
+    background-color: aqua;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    padding: 40%;
+}
+
+.images {
+    display: grid;
+    width: 100px;
+    height: 100px;
+}
+
+html {
+    background-color: rgb(52, 49, 49);
+}
