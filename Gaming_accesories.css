@@ -1,31 +1,325 @@
-h1 {
-    display: grid;
-    justify-content: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
-#nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    list-style-type: none;
-    gap: 100px;
-    background-color: aliceblue;
-}
-
-#top-banner {
-    background-color: aqua;
-    width: 100%;
-    display: grid;
-    align-items: center;
-    padding: 40%;
-}
-
-.images {
-    display: grid;
-    width: 100px;
-    height: 100px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-    background-color: rgb(52, 49, 49);
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: black;
+    font-family: Audiowide, sans-serif;
+    color: white;
+    font-size: 1.10rem;
+    line-height: 1.2;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+/* Areas with grid */
+#top-bar { grid-area: top; }
+#hero { grid-area: hero; }
+#showcase { grid-area: show; }
+#news { grid-area: news; }
+#reviews { grid-area: side; }
+#footer { grid-area: foot; }
+
+#page { display: grid; }
+
+
+/* Navigation and hero */
+
+#top-bar {
+    display: grid;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    grid-template-columns: 22% 56% 22%;
+    grid-template-areas: "logo nav name";
+    align-items: center;
+    padding: 1% 1%;
+    background-color: black;
+    border-bottom: 1px solid rgb(184, 19, 184);
+}
+
+#logo {
+    grid-area: logo;
+    max-width: 40px;
+    max-height: 40px;
+}
+
+#nav {
+    grid-area: nav;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#nav a:hover {
+    color: rgb(131, 7, 255);
+}
+
+#name {
+    grid-area: name;
+    text-align: right;
+    font-size: 1.1rem;
+    color: rgb(255, 0, 0);
+    text-transform: uppercase;
+}
+
+#name:hover {
+    color: rgb(255, 247, 3);
+}
+
+#hero {
+    position: relative;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 6%;
+    background: url("Gaming_banner.jpg")center / cover no-repeat;
+}
+
+#hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+}
+
+#hero h1, #hero p {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+#hero h1 {
+    font-size: 3.6rem;
+    font-weight: 900;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+#hero p {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 10px 20px;
+    background-color: rgb(255, 0, 255);
+    color: black;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    align-self: center;
+}
+
+#devices {
+    display: flex;
+    align-items: flex-end;
+    gap: 2%;
+    padding-bottom: 30px;
+}
+
+#devices figure {
+    width: 15%;
+}
+
+#devices img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border: 2px solid rgb(255, 3, 255);
+    border-radius: 5px;
+}
+
+#showcase-text {
+    font-size: 1.2rem;
+    padding-left: 5%;
+}
+
+/* items and reviews */
+
+#news, #reviews {
+    padding: 3% 3%;
+}
+
+#news {
+    background-color: rgb(21, 21, 21);
+}
+
+#news h2 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: rgb(255, 0, 255);
+}
+
+#news p {
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+.item{
+    display: grid;
+    grid-template-columns: 74% 22%;
+    column-gap: 4%;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgb(255, 0, 255);
+}
+
+.item h3 {
+    margin-bottom: 8px;
+    color: rgb(255, 0, 255);
+    font-size: 1.2rem;
+    line-height: 1.2;
+}
+
+.item p {
+    font-size: 1.1rem;
+}
+
+.item figure img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border: 4px solid rgb(255, 0, 255);
+    border-radius: 3%;
+    transition: transform 0.3s;
+}
+
+.item h3 { grid-column: 1; grid-row: 1; align-self: end; }
+.item p { grid-column: 1; grid-row: 2; align-self: start; }
+.item figure { grid-column: 2; grid-row: 1 / span 2; }
+
+.item:hover figure img {
+    transform: scale(1.03);
+}
+
+.item p {
+    margin-top: 5px;
+    color: grey;
+    font-size: 0.9rem;
+}
+
+/* Aside */
+
+#reviews {
+    background-color: black;
+}
+
+#reviews h2 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: rgb(255, 0, 255);
+}
+
+#reviews p {
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+#author {
+    margin-top: 20px;
+    color: red;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#author span {
+    color: rgb(255, 0, 255);
+}
+
+footer {
+    align-self: center;
+    text-align: center;
+}
+
+@media (min-width: 1281px) {
+    #page {
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+            "top  top"
+            "hero hero"
+            "show show"
+            "news side"
+            "foot foot";
+    }
+
+    #showcase {
+        display: grid;
+        grid-template-columns: 60% 40%;
+        align-items: center;
+    }
+
+    #devices {
+        display: flex;
+        align-items: flex-end;
+        gap: 3%;
+    }
+}
+
+/* Medio: 1025px a 1280px, una columna */
+@media (min-width: 1025px) and (max-width: 1280px) {
+    #page {
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "top"
+            "hero"
+            "show"
+            "news"
+            "side"
+            "foot";
+    }
+
+    #showcase {
+        display: grid;
+        grid-template-columns: 100%;
+        text-align: center;
+    }
+
+    #devices {
+        display: flex;
+        justify-content: center;
+        gap: 3%;
+    }
+}
+
+/* Angosto: 1024px o menos, una columna y sin iconos */
+@media (max-width: 1024px) {
+    #page {
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "top"
+            "hero"
+            "show"
+            "news"
+            "side"
+            "foot";
+    }
+
+    #top-bar {
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+            "logo name"
+            "nav  nav";
+        row-gap: 10px;
+    }
+
+    #nav {
+        justify-content: space-between;
+        gap: 2%;
+    }
+
+    #showcase { display: none; }
+
+    #hero { height: 200px; }
 }
